@@ -34,8 +34,7 @@ body {
 }
 
 .hidden {
-  /* display: none; */
-  display: block;
+  display: none;
 }
 
 h2 {
