@@ -32,3 +32,13 @@ closeModalBtn.addEventListener("click", closeModal);
  * Close the modal window when clicked outside the modal
  */
 overlay.addEventListener("click", closeModal);
+
+/**
+ * Close the modal window when ESC key is pressed
+ */
+document.addEventListener("keydown", function (e) {
+  const keyCode = e.code;
+  if (keyCode === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
