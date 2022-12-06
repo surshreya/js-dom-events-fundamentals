@@ -20,12 +20,13 @@ const diceEl = document.querySelector(".dice");
  * Initialization
  */
 
-let currentScore, activePlayer, scores;
+let currentScore, activePlayer, scores, playing;
 
 const init = () => {
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
+  playing = true;
 
   score0El.textContent = 0;
   score1El.textContent = 0;
@@ -63,22 +64,50 @@ const switchPlayer = () => {
  * Rolling the dice, Playing the Game
  */
 btnRoll.addEventListener("click", function () {
-  // 1. Generate a random dice roll number between 1-6
-  const dice = Math.trunc(Math.random() * 6) + 1;
+  if (playing) {
+    // 1. Generate a random dice roll number between 1-6
+    const dice = Math.trunc(Math.random() * 6) + 1;
 
-  // 2. Display the dice image
-  if (diceEl.classList.contains("hidden")) {
-    diceEl.classList.remove("hidden");
+    // 2. Display the dice image
+    if (diceEl.classList.contains("hidden")) {
+      diceEl.classList.remove("hidden");
+    }
+    diceEl.src = `./public/img/dice-${dice}.png`;
+
+    if (dice === 1) {
+      // Switch the Player
+      switchPlayer();
+    } else {
+      // Add dice to the current score
+      currentScore += dice;
+      document.querySelector(`.current-score--${activePlayer}`).textContent =
+        currentScore;
+    }
   }
-  diceEl.src = `./public/img/dice-${dice}.png`;
+});
 
-  if (dice === 1) {
-    // Switch the Player
-    switchPlayer();
+/**
+ * Holding the Score
+ */
+btnHold.addEventListener("click", function () {
+  scores[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+
+  if (scores[activePlayer] >= 100) {
+    // Stop the game and declare the winner
+    diceEl.classList.remove("hidden");
+
+    playing = false;
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove("player--active");
+
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add("player--winner");
   } else {
-    // Add dice to the current score
-    currentScore += dice;
-    document.querySelector(`.current-score--${activePlayer}`).textContent =
-      currentScore;
+    //Switch the player
+    switchPlayer();
   }
 });
