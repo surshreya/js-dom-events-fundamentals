@@ -47,3 +47,38 @@ init();
  */
 
 btnNew.addEventListener("click", init);
+
+/**
+ * Passes the control to the next player
+ */
+const switchPlayer = () => {
+  currentScore = 0;
+  document.querySelector(`.current-score--${activePlayer}`).textContent = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0El.classList.toggle("player--active");
+  player1El.classList.toggle("player--active");
+};
+
+/**
+ * Rolling the dice, Playing the Game
+ */
+btnRoll.addEventListener("click", function () {
+  // 1. Generate a random dice roll number between 1-6
+  const dice = Math.trunc(Math.random() * 6) + 1;
+
+  // 2. Display the dice image
+  if (diceEl.classList.contains("hidden")) {
+    diceEl.classList.remove("hidden");
+  }
+  diceEl.src = `./public/img/dice-${dice}.png`;
+
+  if (dice === 1) {
+    // Switch the Player
+    switchPlayer();
+  } else {
+    // Add dice to the current score
+    currentScore += dice;
+    document.querySelector(`.current-score--${activePlayer}`).textContent =
+      currentScore;
+  }
+});
