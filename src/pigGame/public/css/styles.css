@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,5 +8,158 @@
 
 html {
   font-size: 62.5%;
-  font-family: sans-serif;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  height: 100vh;
+  font-size: 500;
+  color: #333;
+
+  width: 100rem;
+  margin: 0 auto;
+}
+
+main {
+  position: relative;
+  width: 100rem;
+  height: 60rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  filter: blur();
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 50%;
+  padding: 9rem;
+
+  transition: all 0.8s;
+}
+
+.name {
+  font-size: 3.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.score {
+  font-size: 6.4rem;
+  font-weight: 400;
+  color: #c7365f;
+  letter-spacing: 1px;
+  margin-top: 1.8rem;
+}
+
+.current {
+  background-color: #c7365f;
+  opacity: 0.8;
+  padding: 1.4rem 4.2rem;
+  border-radius: 9px;
+
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+
+  margin-top: auto;
+}
+
+.current-label {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.current-score {
+  font-size: 3.6rem;
+  font-size: 400;
+  letter-spacing: 1px;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.player--active .name {
+  font-weight: 600;
+}
+
+.player--active .score {
+  font-weight: 600;
+}
+
+.player--active .current {
+  opacity: 1;
+}
+
+.dice {
+  height: 6.4rem;
+  width: 6.4rem;
+
+  position: absolute;
+  left: 50%;
+  top: 27.5%;
+  transform: translateX(-50%);
+
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  background: none;
+  border: none;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  padding: 0.7rem 2.5rem;
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: all 0.4s;
+}
+
+.btn:active {
+  transform: translate(-50%, 3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--new {
+  top: 5%;
+}
+
+.btn--roll {
+  top: 68%;
+}
+
+.btn--hold {
+  top: 78%;
+}
+
+.player--winner {
+  background-color: #222;
+}
+
+.player--winner .name {
+  color: #c7365f;
 }
