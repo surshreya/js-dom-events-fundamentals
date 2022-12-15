@@ -8,3 +8,6 @@ Document Object Model - Structured representation of HTML documents. Allows JS t
 It is created when the HTML is loaded in the browser in a tree structure.
 
 ### Guess My Number
+### Modal Project
+### The PIG Game
+### Bankist Website
