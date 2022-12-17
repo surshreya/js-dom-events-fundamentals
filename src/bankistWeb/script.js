@@ -53,3 +53,24 @@ nav.addEventListener("click", function (e) {
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
+
+/*
+ *  Tabbed Components
+ */
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+  if (!clicked) return;
+
+  //Activate Tab
+  tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
+  clicked.classList.add("operations__tab--active");
+
+  //Activate Content
+  const tabId = clicked.dataset.tab;
+  tabsContent.forEach((tabContent) =>
+    tabContent.classList.remove("operations__content--active")
+  );
+  document
+    .querySelector(`.operations__content--${tabId}`)
+    .classList.add("operations__content--active");
+});
